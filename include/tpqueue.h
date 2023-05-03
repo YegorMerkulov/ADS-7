@@ -6,8 +6,8 @@
 
 template<typename T>
 class TPQueue {
-  
-  private:
+
+   private:
     struct Item {
       T data;
       Item* next;
@@ -17,7 +17,7 @@ class TPQueue {
     Item* tail;
     TPQueue::Item* create(const T&);
 
-  public:
+   public:
     TPQueue() : head(nullptr), tail(nullptr) { }
     ~TPQueue();
     void push(const T&);
@@ -25,6 +25,7 @@ class TPQueue {
     void print() const;
 };
 
+template<typename T>
 typename TPQueue<T>::Item* TPQueue<T>::create(const T& data) {
     Item* item = new Item;
     item->data = data;
@@ -33,6 +34,7 @@ typename TPQueue<T>::Item* TPQueue<T>::create(const T& data) {
     return item;
 }
 
+template<typename T>
 T TPQueue<T>::pop() {
     if (!head) {
         throw std::string("TPQueue is empty!");
@@ -45,12 +47,14 @@ T TPQueue<T>::pop() {
     }
 }
 
+template<typename T>
 TPQueue<T>::~TPQueue() {
     while (head) {
         pop();
     }
 }
 
+template<typename T>
 void TPQueue<T>::print() const {
     Item* item2 = head;
     while (item2) {
@@ -60,6 +64,7 @@ void TPQueue<T>::print() const {
     std::cout << std::endl;
 }
 
+template<typename T>
 void TPQueue<T>::push(const T& value) {
     if (head == nullptr) {
         head = create(value);
